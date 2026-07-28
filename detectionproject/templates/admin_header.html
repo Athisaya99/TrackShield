@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>TrackShield - Admin Dashboard</title>
+
+    <!-- FontAwesome -->
+    <link href="/static/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
+
+    <!-- SB Admin CSS -->
+    <link href="/static/admin/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <style>
+        .sidebar-brand-text sup {
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin_dashboard">
+            <div class="sidebar-brand-icon">
+                <i class="fas fa-train"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">
+                TrackShield <sup>Admin</sup>
+            </div>
+        </a>
+
+        <hr class="sidebar-divider my-0">
+
+        <!-- Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="/admin_dashboard">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-heading">
+            Railway Management
+        </div>
+
+        <!-- Manage Trains -->
+        <li class="nav-item">
+            <a class="nav-link" href="/admin_train">
+                <i class="fas fa-train"></i>
+                <span>Manage Trains</span>
+            </a>
+        </li>
+
+        <!-- Loco Pilots -->
+        <li class="nav-item">
+            <a class="nav-link" href="/admin_add_locopilot">
+                <i class="fas fa-user-tie"></i>
+                <span>Loco Pilots</span>
+            </a>
+        </li>
+
+        <!-- Cameras -->
+        <li class="nav-item">
+            <a class="nav-link" href="/admin_camera">
+                <i class="fas fa-video"></i>
+                <span>Manage Cameras</span>
+            </a>
+        </li>
+
+
+        <!-- Awareness -->
+        <li class="nav-item">
+            <a class="nav-link" href="/admin_awareness">
+                <i class="fas fa-bullhorn"></i>
+                <span>Awareness</span>
+            </a>
+        </li>
+
+        <!-- Complaints -->
+        <li class="nav-item">
+            <a class="nav-link" href="/admin_complaint">
+                <i class="fas fa-comments"></i>
+                <span>Complaints</span>
+            </a>
+        </li>
+
+        <!-- History -->
+        <li class="nav-item">
+            <a class="nav-link" href="/admin_history">
+                <i class="fas fa-history"></i>
+                <span>Detection History</span>
+            </a>
+        </li>
+
+<li class="nav-item logout-item">
+    <a class="nav-link logout-link" href="/admin_logout">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+    </a>
+</li>
+
+
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggle -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+    </ul>
+    <!-- End Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Toggle -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Search -->
+                <!--<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3">-->
+                    <!--<div class="input-group">-->
+                        <!--<input type="text" class="form-control bg-light border-0 small"-->
+                               <!--placeholder="Search Alerts...">-->
+                        <!--<div class="input-group-append">-->
+                            <!--<button class="btn btn-primary" type="button">-->
+                                <!--<i class="fas fa-search fa-sm"></i>-->
+                            <!--</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</form>-->
+
+                <!-- Topbar Right -->
+                <ul class="navbar-nav ml-auto">
+
+
+
+                    <!-- User -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                {{ request.user.username }}
+                            </span>
+                            <img class="img-profile rounded-circle"
+                                 src="/static/admin/img/undraw_profile.svg">
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right shadow">
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item text-danger" href="/logout">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+            </nav>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">

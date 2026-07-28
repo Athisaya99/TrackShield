@@ -1,0 +1,72 @@
+{% include 'admin_header.html' %}
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Admin Dashboard</h1>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+
+    <!-- Total Trains -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                    Total Trains
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                    {{ train_count|default:0 }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loco Pilots -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                    Loco Pilots
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                    {{ locopilot_count|default:0 }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cameras -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                    Active Cameras
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                    {{ camera_count|default:0 }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Intrusion Alerts -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-danger shadow h-100 py-2">
+            <div class="card-body">
+                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                    Intrusion Alerts
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                    {{ alert_count|default:0 }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<br>
+<br>
+
+{% include 'admin_footer.html' %}

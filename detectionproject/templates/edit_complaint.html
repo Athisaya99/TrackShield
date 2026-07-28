@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Complaint</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #eef2f3, #dfe9f3);
+            padding: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 25px;
+            width: 420px;
+            margin: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        form:hover {
+            transform: translateY(-3px);
+        }
+
+        label {
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        textarea, input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 18px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        textarea:focus, input[type="date"]:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52,152,219,0.4);
+        }
+
+        button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .update-btn {
+            background: linear-gradient(to right, #3498db, #5dade2);
+        }
+
+        .update-btn:hover {
+            background: linear-gradient(to right, #2980b9, #3498db);
+            transform: scale(1.03);
+        }
+
+        .cancel-btn {
+            background: linear-gradient(to right, #7f8c8d, #95a5a6);
+            float: right;
+        }
+
+        .cancel-btn:hover {
+            background: linear-gradient(to right, #626567, #7f8c8d);
+            transform: scale(1.03);
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Edit Complaint</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label>Complaint</label>
+    <textarea name="complaint" rows="4" required>{{ complaint.complaint }}</textarea>
+
+    <label>Date</label>
+    <input type="date" name="date" value="{{ complaint.date|date:'Y-m-d' }}" required>
+
+    <button type="submit" class="update-btn">Update</button>
+
+    <a href="{% url 'locopilot_complaint' %}">
+        <button type="button" class="cancel-btn">Cancel</button>
+    </a>
+</form>
+
+</body>
+</html>

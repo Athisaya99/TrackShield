@@ -1,0 +1,290 @@
+{% include 'locopilot_header.html' %}
+
+<style>
+
+  /* ── Page offset for fixed header ── */
+  body {
+    padding-top: 80px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* ── Page wrapper ── */
+  .page-wrapper {
+    max-width: 960px;
+    margin: 30px auto 60px;
+    padding: 0 20px;
+  }
+
+  /* ── Page title ── */
+  .page-title {
+    text-align: center;
+    margin-bottom: 28px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--heading-color, #2c3e50);
+    letter-spacing: 0.5px;
+  }
+
+  .page-title span {
+    display: inline-block;
+    border-bottom: 3px solid var(--accent-color, #e74c3c);
+    padding-bottom: 6px;
+  }
+
+  /* ── Flash message ── */
+  .msg {
+    text-align: center;
+    color: #27ae60;
+    font-weight: 600;
+    margin-bottom: 18px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* ── Two-column card row ── */
+  .card-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .det-card {
+    flex: 1;
+    min-width: 260px;
+    background: #fff;
+    padding: 28px 24px;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border-top: 4px solid var(--accent-color, #e74c3c);
+  }
+
+  .det-card .card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .det-card .card-head i {
+    font-size: 1.3rem;
+    color: var(--accent-color, #e74c3c);
+  }
+
+  .det-card .card-head h3 {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--heading-color, #2c3e50);
+  }
+
+  .det-card p.desc {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+  }
+
+  /* ── Buttons ── */
+  .det-btn,
+  .det-btn:link,
+  .det-btn:visited,
+  .det-btn:hover,
+  .det-btn:focus,
+  .det-btn:active {
+    display: block;
+    width: 100%;
+    padding: 11px 16px;
+    background-color: #2c3e50 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border: 2px solid #2c3e50 !important;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none !important;
+    transform: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+  }
+
+  .det-btn-outline,
+  .det-btn-outline:link,
+  .det-btn-outline:visited,
+  .det-btn-outline:hover,
+  .det-btn-outline:focus,
+  .det-btn-outline:active {
+    background-color: #ffffff !important;
+    color: #2c3e50 !important;
+    -webkit-text-fill-color: #2c3e50 !important;
+    border: 2px solid #2c3e50 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* ── File input ── */
+  .file-label,
+  .file-label:hover,
+  .file-label:focus,
+  .file-label:active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 11px 10px;
+    border: 2px dashed #2c3e50 !important;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    color: #2c3e50 !important;
+    -webkit-text-fill-color: #2c3e50 !important;
+    background-color: #ffffff !important;
+    font-size: 0.88rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: none !important;
+    opacity: 1 !important;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  .file-name-display {
+    font-size: 0.78rem;
+    color: #888;
+    text-align: center;
+    margin: -6px 0 0;
+    font-family: 'Roboto', sans-serif;
+    min-height: 16px;
+  }
+
+  /* ── Alerts row ── */
+  .alerts-row {
+    margin-top: 22px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* ── Live stream section ── */
+  .video-container {
+    margin-top: 32px;
+    text-align: center;
+    background: #fff;
+    padding: 24px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
+    border-top: 4px solid var(--accent-color, #e74c3c);
+  }
+
+  .video-container h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--heading-color, #2c3e50);
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  .stream {
+    width: 100%;
+    max-width: 720px;
+    border-radius: 8px;
+    border: 3px solid var(--nav-color, #2c3e50);
+  }
+
+</style>
+
+
+<main class="main">
+  <div class="page-wrapper">
+
+    <h2 class="page-title"><span>Railway Object Detection</span></h2>
+
+    {% if message %}
+      <p class="msg">{{ message }}</p>
+    {% endif %}
+
+    <div class="card-row">
+
+      <!-- ── LIVE CAMERA CARD ── -->
+      <div class="det-card">
+        <div class="card-head">
+          <i class="fa-solid fa-camera"></i>
+          <h3>Live Camera</h3>
+        </div>
+        <p class="desc">Start the live feed to detect objects in real time using the connected track camera.</p>
+        <form method="post">
+          {% csrf_token %}
+          <button class="det-btn" name="start_camera">
+            <i class="fa-solid fa-play" style="margin-right:6px;"></i> Start Live Camera
+          </button>
+        </form>
+        <form method="post">
+          {% csrf_token %}
+          <button class="det-btn det-btn-outline" name="stop_detection">
+            <i class="fa-solid fa-stop" style="margin-right:6px;"></i> Stop Detection
+          </button>
+        </form>
+      </div>
+
+      <!-- ── VIDEO UPLOAD CARD ── -->
+      <div class="det-card">
+        <div class="card-head">
+          <i class="fa-solid fa-film"></i>
+          <h3>Upload Video</h3>
+        </div>
+        <p class="desc">Upload a recorded video file to run AI-powered object detection on it.</p>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <label class="file-label" for="video_file">
+            <i class="fa-solid fa-folder-open"></i> Choose video file&hellip;
+          </label>
+          <input
+            type="file"
+            id="video_file"
+            name="video_file"
+            accept="video/*"
+            required
+            onchange="document.getElementById('file-name-display').textContent = this.files[0]?.name || ''"
+          >
+          <p class="file-name-display" id="file-name-display"></p>
+          <button class="det-btn" name="start_video" style="margin-top:4px;">
+            <i class="fa-solid fa-magnifying-glass" style="margin-right:6px;"></i> Detect Video
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- ── VIEW ALERTS ── -->
+    <div class="alerts-row">
+      <a href="{% url 'view_alert' %}" class="det-btn" style="width:auto; padding:10px 26px;">
+        <i class="fa-solid fa-bell" style="margin-right:7px;"></i> View Alerts
+      </a>
+    </div>
+
+    <!-- ── LIVE STREAM OUTPUT ── -->
+    {% if stream_url %}
+    <div class="video-container">
+      <h3><i class="fa-solid fa-circle" style="color:#e74c3c; margin-right:6px; font-size:0.7rem;"></i> Live Detection Stream</h3>
+      <img src="{{ stream_url }}?t={{ now|date:'U' }}" class="stream" alt="Live detection feed">
+    </div>
+    {% endif %}
+
+  </div>
+</main>
+
+{% include 'locopilot_footer.html' %}

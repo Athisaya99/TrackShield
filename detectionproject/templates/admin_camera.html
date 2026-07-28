@@ -1,0 +1,152 @@
+{% include 'admin_header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Camera Registration</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f7;
+    padding: 30px;
+}
+h2 {
+    text-align: center;
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+form {
+    width: 40%;
+    margin: auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px gray;
+}
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 12px;
+}
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+input[type="submit"] {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background-color: #2c3e50;
+    border-radius: 5px;
+}
+table {
+    width: 80%;
+    margin: 40px auto;
+    border-collapse: collapse;
+    background-color: white;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background-color: #2c3e50;
+    color: white;
+}
+.edit-btn {
+    background-color: #2980b9;
+    color: white;
+    padding: 5px 8px;
+}
+.delete-btn {
+    background-color: #c0392b;
+    color: white;
+    padding: 5px 8px;
+}
+.message {
+    width: 40%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.success { background-color: #2ecc71; color: white; }
+.error { background-color: #e74c3c; color: white; }
+</style>
+</head>
+
+<body>
+
+<h2>Camera Details</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+
+    <label for="train">Train Name:</label>
+    <select id="train" name="train" required>
+        <option value="">-- Select Train --</option>
+        {% for train in trains %}
+        <option value="{{ train.id }}">{{ train.trainname }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Camera Name</label>
+    <input type="text" name="cameraname" required>
+
+    <input type="submit" value="Submit">
+</form>
+
+<table>
+<thead>
+<tr>
+    <th>Train Name</th>
+    <th>Camera Name</th>
+    <th>Action</th>
+</tr>
+</thead>
+<tbody>
+
+{% for camera in cameras %}
+<tr>
+    <td>{{ camera.TRAIN.trainname }}</td>
+    <td>{{ camera.cameraname }}</td>
+    <td>
+        <a href="{% url 'edit_camera' camera.id %}">
+            <button class="edit-btn">Edit</button>
+        </a>
+        <a href="{% url 'delete_camera' camera.id %}">
+            <button class="delete-btn">Delete</button>
+        </a>
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="3">No cameras registered yet.</td>
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
+
+</body>
+</html>
+{% include 'admin_footer.html' %}

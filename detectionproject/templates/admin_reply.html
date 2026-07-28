@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Reply</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f7;
+            padding: 40px;
+        }
+
+        .container {
+            width: 500px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #219150;
+        }
+
+        .back-btn {
+            background-color: #7f8c8d;
+            margin-left: 10px;
+        }
+
+        .back-btn:hover {
+            background-color: #636e72;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Reply to Complaint</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Loco Pilot ID:</label>
+        <p>{{ complaint.LOCOPILOT_id }}</p>
+
+        <label>Complaint:</label>
+        <textarea rows="4" readonly>{{ complaint.complaint }}</textarea>
+
+        <label>Your Reply:</label>
+        <textarea name="reply" rows="4" required></textarea>
+
+        <button type="submit">Submit Reply</button>
+        <a href="#">
+            <button type="button" class="back-btn">Back</button>
+        </a>
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+{% include 'locopilot_header.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Loco Pilot AI Assistant</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#eef3f7;
+}
+
+.chat-container{
+width:400px;
+margin:100px auto;
+background:white;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.header{
+background:#1a5276;
+color:white;
+padding:15px;
+text-align:center;
+font-size:18px;
+border-radius:10px 10px 0 0;
+}
+
+.chat-box{
+height:400px;
+overflow-y:auto;
+padding:10px;
+}
+
+.user{
+text-align:right;
+margin:10px;
+color:blue;
+}
+
+.bot{
+text-align:left;
+margin:10px;
+color:green;
+}
+
+.input-area{
+display:flex;
+border-top:1px solid #ccc;
+}
+
+input{
+flex:1;
+padding:10px;
+border:none;
+outline:none;
+}
+
+button{
+background:#1a5276;
+color:white;
+border:none;
+padding:10px 20px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="chat-container">
+
+<div class="header">
+Loco Pilot AI Assistant
+</div>
+
+<div id="chatBox" class="chat-box"></div>
+
+<div class="input-area">
+<input type="text" id="messageInput" placeholder="Ask about alerts or railway safety...">
+<button onclick="sendMessage()">Send</button>
+</div>
+
+</div>
+
+
+<script>
+
+function sendMessage(){
+
+let message=document.getElementById("messageInput").value;
+
+if(message==""){
+return;
+}
+
+let chatBox=document.getElementById("chatBox");
+
+chatBox.innerHTML+=`<div class="user">${message}</div>`;
+
+fetch("/locopilot-chatbot/",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+message:message
+})
+
+})
+
+.then(response=>response.json())
+
+.then(data=>{
+
+chatBox.innerHTML+=`<div class="bot">${data.response}</div>`;
+
+chatBox.scrollTop=chatBox.scrollHeight;
+
+});
+
+document.getElementById("messageInput").value="";
+
+}
+
+</script>
+
+</body>
+</html>

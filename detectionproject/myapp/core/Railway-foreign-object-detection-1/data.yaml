@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 5
+names: ['Color_steel', 'Dust_screen', 'Green_house', 'Plastic', 'mulch']
+
+roboflow:
+  workspace: dfsfsd
+  project: railway-foreign-object-detection-2va6t
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/dfsfsd/railway-foreign-object-detection-2va6t/dataset/1

@@ -1,0 +1,76 @@
+{% include 'admin_header.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f6fb;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            background-color: #1a5276;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 0 10px gray;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #1a5276;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #d6eaf8;
+        }
+    </style>
+</head>
+<body>
+
+<h2>History</h2>
+
+<table>
+    <tr>
+
+        <th>Camera</th>
+        <th>Locopilot</th>
+        <th>Date</th>
+        <th>Image</th>
+        <th>Description</th>
+    </tr>
+    {% for a in alerts %}
+    <tr>
+
+        <td>{{ a.CAMERA.cameraname }}</td>
+        <td>{{ a.LOCOPILOT.name }}</td>
+        <td>{{ a.date }}</td>
+        <td><img src="{{ a.Image.url }}" height="100px;" width="100px;"></td>
+        <td>{{ a.description }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html><br><br>
+{% include 'admin_footer.html' %}

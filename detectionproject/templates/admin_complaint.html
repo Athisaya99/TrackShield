@@ -1,0 +1,116 @@
+{% include 'admin_header.html' %}
+<br><br>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - Complaint Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f7;
+            padding: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-top: 20px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        th {
+            background-color: #34495e;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .pending {
+            color: red;
+            font-weight: bold;
+        }
+
+        .replied {
+            color: green;
+            font-weight: bold;
+        }
+
+        .reply-btn {
+            background-color: #27ae60;
+            color: white;
+            padding: 6px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .reply-btn:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Admin - View & Reply Complaints</h2>
+
+<table border="1">
+    <tr>
+        <th>Loco Pilot ID</th>
+        <th>Complaint</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Reply</th>
+    </tr>
+
+    {% for c in complaints %}
+    <tr>
+        <td>{{ c.LOCOPILOT.id }}</td>
+        <td>{{ c.complaint }}</td>
+        <td>{{ c.date }}</td>
+
+        <td>
+            {% if not c.reply %}
+                <span class="pending">Pending</span>
+            {% else %}
+                <span class="replied">Replied</span>
+            {% endif %}
+        </td>
+
+        <td>
+            {% if not c.reply %}
+                <a href="{% url 'admin_reply' c.id %}" class="reply-btn">Reply</a>
+            {% else %}
+                {{ c.reply }}
+            {% endif %}
+        </td>
+    </tr>
+
+    {% empty %}
+    <tr>
+        <td colspan="5">No complaints available.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+
+<br><br>
+{% include 'admin_footer.html' %}
