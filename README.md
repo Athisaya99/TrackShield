@@ -123,17 +123,17 @@ Some of the major data entities include:
 
 [![Admin Dashboard](Screenshot%202026-03-24%20204257.png)](Screenshot%202026-03-24%20204257.png)
 
-### 🏠 Camera Feed
+### 🚂 Loco Pilot Dashboard
 
-[![Camera Feed](Screenshot%202026-03-24%20204727.png)](Screenshot%202026-03-24%20204727.png)
+[![Loco Pilot Dashboard](Screenshot%202026-03-24%20204727.png)](Screenshot%202026-03-24%20204727.png)
 
-### 🎥 Detection Alert
+### 📹 Camera Feed
 
-[![Railway Object Detection](Screenshot%202026-03-24%20205110.png)](Screenshot%202026-03-24%20205110.png)
+[![Camera Feed](Screenshot%202026-03-24%20205110.png)](Screenshot%202026-03-24%20205110.png)
 
-### 🚨 Locopilot Dashborad
+### 🤖 Object Detection
 
-[![ Locopilot Dashborad](Screenshot%202026-03-25%20120945.png)](Screenshot%202026-03-25%20120945.png)
+[![Object Detection](Screenshot%202026-03-25%20120945.png)](Screenshot%202026-03-25%20120945.png)
 
 ## ⚙️ Installation
 
