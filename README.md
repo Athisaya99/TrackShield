@@ -115,18 +115,25 @@ Some of the major data entities include:
 
 ## 📸 Screenshots
 
-Screenshots of the application's main pages can be added here.
+### 🔐 Login Page
 
-Example:
+[![Login Page](Screenshot%202026-03-24%20203845.png)](Screenshot%202026-03-24%20203845.png)
 
-```text
-screenshots/
-├── admin-login.png
-├── admin-dashboard.png
-├── camera-feed.png
-├── detection-alert.png
-└── loco-pilot-dashboard.png
-```
+### 📊 Admin Dashboard
+
+[![Admin Dashboard](Screenshot%202026-03-24%20204257.png)](Screenshot%202026-03-24%20204257.png)
+
+### 🏠 Camera Feed
+
+[![Camera Feed](Screenshot%202026-03-24%20204727.png)](Screenshot%202026-03-24%20204727.png)
+
+### 🎥 Detection Alert
+
+[![Railway Object Detection](Screenshot%202026-03-24%20205110.png)](Screenshot%202026-03-24%20205110.png)
+
+### 🚨 Locopilot Dashborad
+
+[![ Locopilot Dashborad](Screenshot%202026-03-25%20120945.png)](Screenshot%202026-03-25%20120945.png)
 
 ## ⚙️ Installation
 
